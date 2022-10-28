@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        PHP_CONFIG: php.ini
+        PHP_XDEBUG: '1'
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - '8000:80'
+    volumes:
+      - .:/var/www/html
+
+  queue:
+    build:
+      context: .
+      args:
+        PHP_CONFIG: php.ini
+        PHP_XDEBUG: '1'
+    command: php artisan queue:work
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - .:/var/www/html

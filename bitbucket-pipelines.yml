@@ -1,0 +1,13 @@
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Build and push
+          caches:
+            - docker
+          script:
+            - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
+            - docker build -t syncloudsoftech/starter-laravel9:latest .
+            - docker push syncloudsoftech/starter-laravel9:latest
