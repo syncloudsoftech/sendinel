@@ -22,16 +22,16 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "description": "Starter project based on Laravel 9 + Docker, uses Bootstrap 5 + Font Awesome 6 for styling.",
+    "description": "Open-source alternative or clone of wetransfer.com to share large files easily over email.",
     "extra": {
         "laravel": {
             "dont-discover": []
         }
     },
-    "keywords": ["framework", "laravel"],
+    "keywords": ["file", "sharing", "wetransfer"],
     "license": "MIT",
     "minimum-stability": "dev",
-    "name": "syncloudsoftech/starter-laravel9",
+    "name": "syncloudsoftech/sendinel",
     "prefer-stable": true,
     "require": {
         "php": "^8.0.2",
