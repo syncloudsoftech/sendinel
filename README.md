@@ -1,6 +1,11 @@
-# sendinel
+<h1 align="center">sendinel</h1>
 
-Open-source alternative or clone of [wetransfer.com](https://wetransfer.com/) to share large files easily over email.
+<p align="center">
+    Open-source alternative or clone of <a href="https://wetransfer.com/">wetransfer.com</a> to share large files easily over email
+    or social media.
+</p>
+
+[![Screenshot](https://raw.githubusercontent.com/syncloudsoftech/sendinel/main/.github/screen-anim.gif)](.github)
 
 ## Development
 
