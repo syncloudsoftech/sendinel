@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Upload;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UploadObserver
@@ -66,9 +67,21 @@ class UploadObserver
      * @param  \App\Models\Upload  $upload
      * @return void
      */
+    public function deleting(Upload $upload)
+    {
+        $upload->downloads()->delete();
+    }
+
+    /**
+     * Handle the Upload "deleted" event.
+     *
+     * @param  \App\Models\Upload  $upload
+     * @return void
+     */
     public function deleted(Upload $upload)
     {
-        //
+        Storage::disk($upload->disk)
+            ->delete($upload->path);
     }
 
     /**
