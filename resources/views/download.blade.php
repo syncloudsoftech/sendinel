@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="card border-0 shadow-sm">
-        <form action="{{ route('download.download', $upload) }}" id="form-download" method="post">
+        <form action="{{ route('download.submit', $upload) }}" id="form-download" method="post">
             @csrf
             <div class="card-body">
                 <h1 class="h4 card-title text-primary mb-3">

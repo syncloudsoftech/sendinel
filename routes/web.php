@@ -17,18 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('home');
 
 Route::controller(App\Http\Controllers\UploadController::class)
+    ->name('upload.')
     ->group(function () {
 
-        Route::get('/', 'index');
-        Route::post('/', 'upload');
+        Route::get('/', 'form')->name('form');
+        Route::post('/', 'submit')->name('submit');
     });
 
 Route::controller(App\Http\Controllers\DownloadController::class)
+    ->name('download.')
+    ->prefix('d')
     ->group(function () {
 
-        Route::get('d/{hash}', 'index')->name('download.index');
-        Route::post('d/{upload}/download', 'download')->name('download.download');
-        Route::post('d/{upload}/report', 'report')->name('download.report');
+        Route::get('{hash}', 'show')->name('show');
+        Route::post('{upload}', 'submit')->name('submit');
     });
 
 // Auth::routes();

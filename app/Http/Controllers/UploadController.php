@@ -15,12 +15,12 @@ use UAParser\Parser;
 
 class UploadController extends Controller
 {
-    public function index(): Renderable
+    public function form(): Renderable
     {
         return view('upload');
     }
 
-    public function upload(UploadRequest $request)
+    public function submit(UploadRequest $request)
     {
         $data = $request->validated();
         $password = null;

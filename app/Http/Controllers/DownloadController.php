@@ -12,7 +12,19 @@ use UAParser\Parser;
 
 class DownloadController extends Controller
 {
-    public function download(Upload $upload, DownloadRequest $request)
+    public function show(string $hash, Request $request)
+    {
+        /** @var Upload $upload */
+        $upload = Upload::query()
+            ->where('hash', $hash)
+            ->firstOrFail();
+        abort_if($upload->expires_at->isPast(), 404);
+        $uploaded = $request->has('uploaded');
+
+        return view('download', compact('upload', 'uploaded'));
+    }
+
+    public function submit(Upload $upload, DownloadRequest $request)
     {
         $data = $request->validated();
         if ($upload->password && (empty($data['password']))) {
@@ -37,17 +49,5 @@ class DownloadController extends Controller
 
         return Storage::disk($upload->disk)
             ->download($upload->path, $upload->name);
-    }
-
-    public function index(string $hash, Request $request)
-    {
-        /** @var Upload $upload */
-        $upload = Upload::query()
-            ->where('hash', $hash)
-            ->firstOrFail();
-        abort_if($upload->expires_at->isPast(), 404);
-        $uploaded = $request->has('uploaded');
-
-        return view('download', compact('upload', 'uploaded'));
     }
 }

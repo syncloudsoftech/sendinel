@@ -45,6 +45,6 @@ class Upload extends Model
 
     public function getUrlAttribute(): string
     {
-        return route('download.index', $this->hash);
+        return route('download.show', $this->hash);
     }
 }

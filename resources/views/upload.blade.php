@@ -14,7 +14,7 @@
                 {{ __(':app lets you upload and share large files securely.', ['app' => config('app.name')]) }}
                 {{ __('You can also add password protection or make files expire after a certain period.') }}
             </p>
-            <form enctype="multipart/form-data" id="form-upload" method="post">
+            <form action="{{ route('upload.submit') }}" enctype="multipart/form-data" id="form-upload" method="post">
                 @csrf
                 <div class="mb-3">
                     <div class="custom-file">
