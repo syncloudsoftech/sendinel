@@ -24,66 +24,50 @@ $.ajaxSetup({
     }
 });
 
-$('button[data-action="copy-link"]').on('click', async function (e) {
-    e.preventDefault();
-    const $input = $(this).parent().find('input');
-    let success;
-    if (navigator.clipboard) {
-        success = await navigator.clipboard.writeText($input.val())
-            .then(() => true);
-    } else {
-        $input.focus();
-        $input.select();
-        success = document.execCommand('copy');
-    }
+$('#form-download').on('submit', function (e) {
+    const $form = $(this);
+    const $submit = $form.find('button:submit');
+    const time = parseInt($submit.data('wait-time'));
+    if (time <= 0) return;
 
-    if (success) {
-        $input.addClass('is-valid');
-        setTimeout(() => $input.removeClass('is-valid'), 1000);
-    }
-});
-
-$('button[data-action="download"]').on('click', function (e) {
     e.preventDefault();
-    const $this = $(this);
-    const $i = $('i', this);
-    const $span = $('span', this);
-    const text = $this.data('wait-text');
+    const $i = $submit.find('i');
+    const $span = $submit.find('span');
+    const text = $submit.data('wait-text');
     const text_original = $span.text();
-    const time = parseInt($this.data('wait-time'));
     $i.removeClass('fa-download')
         .addClass('fa-circle-notch fa-spin');
     $span.text(sprintf(text, time));
-    $this.prop('disabled', true);
+    $submit.prop('disabled', true);
     let waited = 0;
     const timer = setInterval(() => {
         if (waited < time) {
-            $span.text(sprintf(text, time - (++waited)))
-            return
+            $span.text(sprintf(text, time - (++waited)));
+            return;
         }
 
         clearInterval(timer);
         $i.removeClass('fa-circle-notch fa-spin')
             .addClass('fa-download');
         $span.text(text_original);
-        $this.prop('disabled', false);
-        $this.closest('form').submit();
+        $submit.prop('disabled', false);
+        $form.off('submit').submit();
     }, 1000);
 });
 
-$('button[data-action="upload"]').on('click', function (e) {
+$('#form-upload').on('submit', function (e) {
     e.preventDefault();
-    const $this = $(this);
-    const $i = $('i', this);
-    const $span = $('span', this);
-    const text = $this.data('wait-text');
+    const $form = $(this);
+    const $submit = $form.find('button:submit');
+    const $i = $submit.find('i');
+    const $span = $submit.find('span');
+    const text = $submit.data('wait-text');
     const text_original = $span.text();
     let progress = 0;
     $i.removeClass('fa-upload')
         .addClass('fa-circle-notch fa-spin');
     $span.text(sprintf(text, progress));
-    $this.prop('disabled', true);
-    const $form = $this.closest('form');
+    $submit.prop('disabled', true);
     $form.find('.is-invalid').removeClass('is-invalid');
     $form.find('.invalid-feedback').remove();
     $.ajax({
@@ -92,7 +76,7 @@ $('button[data-action="upload"]').on('click', function (e) {
             $i.removeClass('fa-circle-notch fa-spin')
                 .addClass('fa-upload');
             $span.text(text_original);
-            $this.prop('disabled', false);
+            $submit.prop('disabled', false);
         },
         contentType: false,
         data: new FormData($form.get(0)),
@@ -123,4 +107,23 @@ $('button[data-action="upload"]').on('click', function (e) {
         type: $form.attr('method'),
         url: $form.attr('action'),
     });
+});
+
+$('#button-copy-link').on('click', async function (e) {
+    e.preventDefault();
+    const $input = $(this).parent().find('input');
+    let success;
+    if (navigator.clipboard) {
+        success = await navigator.clipboard.writeText($input.val())
+            .then(() => true);
+    } else {
+        $input.focus();
+        $input.select();
+        success = document.execCommand('copy');
+    }
+
+    if (success) {
+        $input.addClass('is-valid');
+        setTimeout(() => $input.removeClass('is-valid'), 1000);
+    }
 });

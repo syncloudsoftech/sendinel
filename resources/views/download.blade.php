@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="card border-0 shadow-sm">
-        <form action="{{ route('download.download', $upload) }}" method="post">
+        <form action="{{ route('download.download', $upload) }}" id="form-download" method="post">
             @csrf
             <div class="card-body">
                 <h1 class="h4 card-title text-primary mb-3">
@@ -36,7 +36,7 @@
                     <span class="input-group-text"><i class="fas fa-link"></i></span>
                     <!--suppress HtmlFormInputWithoutLabel -->
                     <input class="form-control" readonly type="url" value="{{ $upload->url }}">
-                    <button class="btn btn-dark" data-action="copy-link" type="button">
+                    <button class="btn btn-dark" id="button-copy-link" type="button">
                         <i class="fas fa-clipboard"></i>
                     </button>
                 </div>
@@ -81,7 +81,7 @@
                     $download_wait_time = config('app.download_wait_time');
                 @endphp
                 <div class="btn-toolbar mb-3">
-                    <button class="btn btn-success" @if ($download_wait_time > 0) data-action="download" data-wait-time="{{ $download_wait_time }}" data-wait-text="{{ __('Downloading in %d seconds...') }}" @endif>
+                    <button class="btn btn-success" @if ($download_wait_time > 0) data-wait-time="{{ $download_wait_time }}" data-wait-text="{{ __('Downloading in %d seconds...') }}" @endif>
                         <i class="fas fa-download me-1"></i> <span>{{ __('Download') }}</span>
                     </button>
                     <button class="btn btn-link text-dark ms-1" data-bs-target="#modal-report" data-bs-toggle="modal" type="button">
