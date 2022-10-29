@@ -75,7 +75,7 @@
                     <button class="btn btn-success" data-wait-text="{{ __('%d%% Uploaded') }}">
                         <i class="fas fa-upload me-1"></i> <span>{{ __('Upload') }}</span>
                     </button>
-                    <button class="btn btn-link ms-1" data-bs-target="#upload-options" data-bs-toggle="collapse" type="button">
+                    <button class="btn btn-link text-dark ms-1" data-bs-target="#upload-options" data-bs-toggle="collapse" type="button">
                         {{ __('Options') }}
                     </button>
                 </div>
