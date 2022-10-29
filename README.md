@@ -10,7 +10,7 @@
 ## Development
 
 You can use [Docker](https://www.docker.com/) to run the project quickly and easily.
-In addition, you must [Node.js](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/), [PHP](https://www.php.net/) and [composer](https://getcomposer.org/) also installed on your workstation.
+In addition, make sure [Node.js](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/), [PHP](https://www.php.net/) and [composer](https://getcomposer.org/) are also installed on your workstation.
 Once you have everything, download or clone the code and run below commands in project folder:
 
 ```shell
