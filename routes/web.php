@@ -31,7 +31,7 @@ Route::controller(App\Http\Controllers\DownloadController::class)
         Route::post('d/{upload}/report', 'report')->name('download.report');
     });
 
-Auth::routes();
+// Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
