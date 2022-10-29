@@ -16,6 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
 
+Route::controller(App\Http\Controllers\UploadController::class)
+    ->group(function () {
+
+        Route::get('/', 'index');
+        Route::post('/', 'upload');
+    });
+
+Route::controller(App\Http\Controllers\DownloadController::class)
+    ->group(function () {
+
+        Route::get('d/{hash}', 'index')->name('download.index');
+        Route::post('d/{upload}/download', 'download')->name('download.download');
+        Route::post('d/{upload}/report', 'report')->name('download.report');
+    });
+
 Auth::routes();
 
 Route::middleware('auth')->group(function () {

@@ -1,2 +1,6 @@
 @import 'variables';
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    background: $body-bg url('../images/body.png');
+}

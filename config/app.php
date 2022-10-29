@@ -212,4 +212,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'dmca_email' => env('DMCA_EMAIL', 'someone@example.com'),
+    'download_wait_time' => env('DOWNLOAD_WAIT_TIME', 5),
+    'max_upload_size' => env('MAX_UPLOAD_SIZE', 50),
+
 ];

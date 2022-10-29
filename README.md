@@ -44,5 +44,5 @@ Some additional configuration described below may be needed for extended functio
 
 ### File uploads
 
-Before uploading files, you may need to log in to [MinIO](https://min.io/) console at [http://localhost:9091/](http://localhost:9091/) using `starterapp` as both (username and password) and create a bucket named `starterapp`.
+Before uploading files, you may need to log in to [MinIO](https://min.io/) console at [http://localhost:9091/](http://localhost:9091/) using `sendinel` as both (username and password) and create a bucket named `sendinel`.
 Once created, go to bucket's settings and change its **Access Policy** to `Public`.

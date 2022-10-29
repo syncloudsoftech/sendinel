@@ -11,8 +11,8 @@ services:
     image: minio/minio:latest
     command: minio server /data/minio --address ":9090" --console-address ":9091"
     environment:
-      MINIO_ROOT_USER: starterapp
-      MINIO_ROOT_PASSWORD: starterapp
+      MINIO_ROOT_USER: sendinel
+      MINIO_ROOT_PASSWORD: sendinel
     ports:
       - '9090:9090'
       - '9091:9091'
@@ -23,9 +23,9 @@ services:
     image: mysql:8
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_DATABASE: starterapp
-      MYSQL_USER: starterapp
-      MYSQL_PASSWORD: starterapp
+      MYSQL_DATABASE: sendinel
+      MYSQL_USER: sendinel
+      MYSQL_PASSWORD: sendinel
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     ports:
       - '3306:3306'
@@ -38,8 +38,8 @@ services:
       - mysql
     environment:
       PMA_HOST: mysql
-      PMA_USER: starterapp
-      PMA_PASSWORD: starterapp
+      PMA_USER: sendinel
+      PMA_PASSWORD: sendinel
     ports:
       - '8080:80'
 
