@@ -24,7 +24,7 @@ class UploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'attachment' => ['required', 'file', 'max:'.(config('app.max_upload_size') * 1024 * 1024)],
+            'attachment' => ['required', 'file', 'max:'.(config('app.max_upload_size') * 1024)],
             'sender' => ['required', 'string', 'email', 'max:255'],
             'comments' => ['nullable', 'string', 'max:512'],
             'recipient' => ['nullable', 'string', 'email', 'max:255'],

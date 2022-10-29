@@ -62,9 +62,9 @@
                     <div class="mb-3">
                         <!--suppress HtmlFormInputWithoutLabel -->
                         <select class="form-select @error('expiry') is-invalid @enderror" name="expiry" required>
-                            <option value="1">Expires after 1 day</option>
+                            <option value="1" selected>Expires after 1 day</option>
                             <option value="7">Expires after 7 days</option>
-                            <option value="30" selected>Expires after 30 days</option>
+                            <option value="30">Expires after 30 days</option>
                         </select>
                         @error('expiry')
                             <div class="invalid-feedback">{{ $message }}</div>
